@@ -31,7 +31,7 @@ public class CryptoCurrencyRestController {
     @ApiOperation(value = "Return min, max, new and old prices for specific crypto currency")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Crypto currency found and response is successful"),
-            @ApiResponse(code = 204, message = "No such currency")
+            @ApiResponse(code = 400, message = "No such currency")
     })
     @GetMapping("/{currency}")
     public ResponseEntity<ExtendedCurrency> getByCurrency(@PathVariable(value = "currency") String currency) {
@@ -50,7 +50,7 @@ public class CryptoCurrencyRestController {
     @ApiOperation(value = "Return a currency that has the highest normalised price range in specific day")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Data exist, and successfully returned"),
-            @ApiResponse(code = 204, message = "No data to return per provided day")
+            @ApiResponse(code = 400, message = "No data to return per provided day")
     })
     @GetMapping("/normalise-max")
     public ResponseEntity<NormalisedCurrency> getMaxNormalised(
